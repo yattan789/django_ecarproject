@@ -1,0 +1,35 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+  
+body { 
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+</style>
+
+
+<div class="header">
+  <h2>Blogs</h2>
+
+{% for i in blogs%}
+<hr>
+        <h6><strong>Title-{{i.Title}}</strong> <a class="btn btn-primary" href="{% url 'viewblog' i.id %}"> click to view</a></h6>
+       
+    {% endfor %}
+
+</div>
+
+
+{% endblock content %}

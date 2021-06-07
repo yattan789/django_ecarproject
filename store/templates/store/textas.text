@@ -1,0 +1,27 @@
+	<img class="thumbnail" src="{{i.imageURL}}">
+			<div class="largebox-element product">
+				<h6 color="black"><strong>Name -- {{i.name}}</strong></h6>
+				<hr>
+
+				<h6><strong>Year -- {{i.Year}}</strong></h6>
+				<h6><strong>Location -- {{i.location}}</strong></h6>
+				<h6><strong>KM used    --{{i.Km}}</strong></h6>
+				<h6><strong>Total Price    --{{i.totalprice}}</strong></h6>
+				<h6><strong>Owned by -- {{i.Owners}} -- owners</strong></h6>
+				<h6><strong>other Details   --{{i.des}}</strong></h6>		
+               
+				<h4 style="display: inline-block; float: left"><strong>Booking Price₹{{i.price}}</strong></h4>
+<hr>
+				<button style="float:right" data-product="{{i.id}}" data-action="add" class="btn btn-primary add-btn update-cart">Buy</button>
+				
+                  <button  style="float: : center " class="btn btn-primary" onclick="return confirm('Number of Seller -{{i.number}}')">Seller's Number</button>
+				
+				
+				<a style="float:left"href="{% url 'store' %}"class="btn btn-success">Back</a>
+
+
+
+
+
+
+                  <button  style="display: inline-block"onclick="return confirm('Ok to confirm order')" data-product="{{i.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Buy</button>

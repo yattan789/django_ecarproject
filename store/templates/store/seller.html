@@ -1,0 +1,79 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style >
+  
+body { 
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+
+.leftcolumn {
+  float: left;
+  width: 50%;
+}
+
+
+.rightcolumn {
+  float: left;
+  width: 50%;
+  padding-left: 20px;
+}
+
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+</style>
+
+
+<div class="header">
+  <h2>Advertise Here</h2>
+</div>
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Car</h2>
+      
+      <h5> 
+  
+
+</h5>
+     
+      <a href="{% url 'sell'%}">Click here to contiue</a>
+    </div>
+    
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2 >Note</h2>
+      <p>After Verfication Request Will Post </p>
+
+    </div>
+</div>
+     {% for message in messages %}
+           <div class="header">
+            <h2>{{message}}</h2>
+</div></div>
+            {% endfor%}
+
+{% endblock content %}

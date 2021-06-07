@@ -1,0 +1,80 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style >
+  
+body { 
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+</style>
+
+{% for i in blogs%}
+
+<div class="header">
+  <h2>Blogs</h2>
+</div>
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>{{i.Title}}</h2>
+      <h5> 
+  
+
+</h5>
+      <div style="height:200px;">
+  <img class="thumbnail" src="{{i.imageURL}}">
+ </div>
+      <p>{{i.des}}</p>
+    </div>
+    <div class="card">
+      <h5>Date--,{{i.date}}</h5>
+      
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Name of Author</h2>
+ 
+      <h2>{{i.au}}</h2>
+    </div>
+
+{% endfor %}
+
+{% endblock content %}

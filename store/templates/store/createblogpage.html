@@ -1,0 +1,99 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style >
+  
+body { 
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+
+.leftcolumn {
+  float: left;
+  width:70%;
+}
+
+
+.rightcolumn {
+  float: right;
+  width: 25%;
+  padding-left: 20px;
+}
+
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+</style>
+<div class="header">
+  <h2>Create a Blogs Here</h2>
+</div>
+
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+
+
+<form  class="card" method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+         {{ form.management_form }}
+    <TABLE> 
+          {% for form in form %}
+         <tr>
+            <th>{{form.label_tag}}</th>
+            <th>=</th>
+            <th class="card">{{form}}{{form.help_text}}</th>
+            
+         </tr>
+           {% endfor %}
+        </TABLE>
+        <hr>
+<button class="btn btn-primary" ,type="submit" >Submit</button>
+
+</form>
+
+
+
+</div></div>
+<div class="rightcolumn">
+    <div class="card">
+      <h2>Other Blogs</h2>
+      {% for i in totalblog%}
+<hr> 
+        <h6><strong>Title-{{i.Title}}</strong>
+        
+          <a href="{% url 'viewblog' i.id %}"> click to view</a></h6>
+              <hr>
+<a href="{% url 'viewblog2' i.id %}" onclick="return confirm('Do you really want to delete this post')">Delete this blog</a>
+          </form>
+       
+    {% endfor %}
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+{% endblock content %}

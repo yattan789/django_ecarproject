@@ -1,0 +1,76 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<style >  
+body { 
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+
+.leftcolumn {
+  float: left;
+  width: 100%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.card
+{
+
+  padding: 30px;
+   text-align: center;
+  background: white;
+}
+}
+
+
+</style>
+
+<div class="header">
+  <h2>Please Fill the details</h2>
+</div>
+<div class="row">
+
+  <div class="leftcolumn">
+      <hr>
+      <h2 style="text-align: center;">Car details</h2>
+      <h5>  </h5>
+   {%if request.user.username %}   
+<form  class="card" method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+         {{ form.management_form }}
+    <TABLE> 
+          {% for form in form %}
+         <tr>
+            <th>{{form.label_tag}}</th>
+            <th>=</th>
+            <th class="card">{{form}}{{form.help_text}}</th>
+            
+         </tr>
+           {% endfor %}
+        </TABLE>
+        <hr>
+<button class="btn btn-primary" ,type="submit" >Submit</button>
+
+</form>
+{%else%}
+   <p class="card">Please Login first</p>
+{%endif%}
+
+    </div>
+
+{% endblock content %}
+

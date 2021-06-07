@@ -1,0 +1,69 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+    body,
+body {
+    background-color:#F3E5AB;
+}
+
+</style>
+
+<h6 ><strong>Choose Sort Option                (Total Cars- {{count}})</strong></h6>
+				 
+<div class="form-inline my-2 my-lg-0">
+	     	<a href="{% url 'low' %}"class="btn btn-secondary">Low to High</a>
+	     	<h>----<h>
+
+	     	<a href="{% url 'high' %}"class="btn btn-primary">High to Low</a>
+	     	<h>----<h>
+	     	
+	     	<a href="{% url 'location' %}"class="btn btn-secondary">Location</a>
+	         
+	         <h>----<h>
+	        <a href="{% url 'store' %}"class="btn btn-primary">Back</a>
+	     	
+	     </div>
+	     <hr>
+	     <div>
+	     	<form method="POST" action="">
+	     		{%csrf_token%}
+     <div class="input-group" >
+   
+    <input type="text" class="form-control" name="query" placeholder="Search Car Name here">
+  </div>
+
+<hr>
+   
+            <button type="submit" name="button" class="btn btn-primary">FIND</button>
+    </form>
+<hr>
+  {% for message in messages %}
+
+            <p>{{message}}</p>
+
+            {% endfor%}
+
+
+</div>
+
+	<div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{product.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>NAME--{{product.name}}</strong></h6>
+				<hr>
+				  <h6><strong>LOCATION--{{product.location}}</strong></h6>
+				  <h6><strong>Total Price--₹{{product.totalprice}}</strong></h6>
+				<hr>
+				<a style="display: inline-block;" href="{% url 'view' product.id %}">View</a>
+	
+
+			</div>
+		</div>
+		{% endfor %}
+	
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+				 <style>
+    body,
+body {
+    background-color:#F3E5AB;
+}
+
+</style>
+<div class="form-inline my-2 my-lg-0">
+	 
+	
+
+</div>
+
+	<div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{product.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>NAME--{{product.name}}</strong></h6>
+				<hr>
+				  <h6><strong>LOCATION--{{product.location}}</strong></h6>
+
+				  <h6>Details--{{product.des}}</h6>
+				  <hr>
+
+				<button onclick="return confirm('Ok to confirm order')" data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Buy</button>
+				
+				<a class="btn btn-outline-success" href="{% url 'view' product.id %}">View</a>
+				<h4 style="display: inline-block; float: right"><strong>₹{{product.price}}</strong></h4>
+
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}

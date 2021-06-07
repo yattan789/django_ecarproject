@@ -1,0 +1,44 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body,
+body {
+    background-color:#F3E5AB;
+}
+
+</style>
+<h6><strong>Choose Sort option</strong></h6>
+
+<div class="form-inline my-2 my-lg-0">
+
+	     	<a href="{% url 'high' %}"class="btn btn-primary">High to Low</a>
+	     	<h>----<h>
+	     	
+	     	<a href="{% url 'location' %}"class="btn btn-secondary">Location</a>
+	         
+	         <h>----<h>
+	        <a href="{% url 'store' %}"class="btn btn-primary">Back</a>
+	     	
+	     </div>
+	     <hr>
+	     <div>
+	
+
+		<div class="row">
+		{% for product in products %}
+		<div class="col-lg-4">
+			<img class="thumbnail" src="{{product.imageURL}}">
+			<div class="box-element product">
+				<h6><strong>NAME--{{product.name}}</strong></h6>
+				<hr>
+				  <h6><strong>LOCATION--{{product.location}}</strong></h6>
+				  <h6><strong>Expecting Price--{{product.totalprice}}</strong></h6>
+
+				<a style="display: inline-block;" href="{% url 'view' product.id %}">View</a>
+			</div>
+		</div>
+		{% endfor %}
+	
+ </div>
+{% endblock content %}

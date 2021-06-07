@@ -1,0 +1,94 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<style >
+
+body { 
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+
+.leftcolumn {
+  float: left;
+  width: 100%;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+</style>
+
+
+<div class="header">
+  <h2>Details</h2>
+</div>
+
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Orders</h2>
+      
+    <table border="1">
+          <table class = "table">
+   <thead>
+      <tr>
+         <th>Customer name</th>>
+         <th>Alternate Number</th>
+         <th>Total price</th>
+         <th>Location</th>
+         <th>Transaction id</th>
+         <th>Date</th>
+         <th>Details</th>  
+         <th></th>      
+      </tr>
+   </thead>
+     
+   <tbody>
+    {% for product in product %}
+      <tr class = "active">
+         <td>{{product.customer.user}} </td>
+         <td>{{product.phone}} </td>
+         <td>{{product.order.total}} </td>
+         <td>{{product.zipcode}},{{product.city}} </td>
+         <td>{{product.order.transaction_id}}</td>
+         <td>{{product.date_added}}</td>
+         <td><a class="btn btn-outline-primary" href="{% url 'ordersview' product.order.transaction_id %}">open</a></td>
+        <td><a class="btn btn-outline-danger" href="{% url 'delete' product.id %}"  onclick="return confirm('Do you really want to delete this order')" >Delete</a></td>
+      </tr>
+      {% endfor %}
+   </tbody>
+</table>
+
+     
+      <p><strong>Total Orders- {{count}}</strong></p>
+    </div>
+
+  
+
+  </div>
+
+
+
+
+
+{% endblock content %}
